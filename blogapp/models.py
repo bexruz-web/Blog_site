@@ -8,11 +8,10 @@ class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
 
-
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
-        ('published', 'Published')
+        ('published', "Published")
     )
 
     title = models.CharField(max_length=255)
@@ -22,7 +21,7 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10,choices=STATUS_CHOICES, default='draft')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
     class Meta:
         ordering = ('-publish',)
@@ -35,14 +34,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("blog:post_detail", args=[self.publish.year,
-                                                 self.publish.month,
-                                                 self.publish.day,
-                                                 self.slug])
+                                                          self.publish.month,
+                                                          self.publish.day,
+                                                          self.slug])
 
-
-posts = Post.objects.filter(status='published')
+posts = Post.objects.all()
 p_posts = Post.published.all()
-
 
 
 
