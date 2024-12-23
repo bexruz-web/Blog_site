@@ -91,7 +91,7 @@ input[type=submit] {
 }
 
 .comment:nth-child(even) {
-    background: #efefef;
+    background: #000000;
 }
 
 .comment .info {
