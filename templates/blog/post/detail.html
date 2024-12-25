@@ -10,7 +10,7 @@
     {{ post.body|linebreaks }}
 
     <p>
-        <a href="ordf">
+        <a href="{% url 'blogapp:post_share' post.id %}">
             Share this post
         </a>
     </p>
